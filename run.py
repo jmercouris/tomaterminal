@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import time
 import sys
 
@@ -22,6 +23,9 @@ def progress(count, total, suffix=''):
     bar = '=' * filled_len + '-' * (progress_bar_length - filled_len)
     sys.stdout.write('[%s] %s%s %s\r' % (bar, percents, '%', suffix))
     sys.stdout.flush()
+
+def print_help():
+    print("Help")
 
 # Initial Entry into Program; Clear Screen
 print(chr(27) + "[2J")
