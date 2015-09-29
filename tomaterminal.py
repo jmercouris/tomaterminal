@@ -12,7 +12,7 @@ parser.add_argument('-b','--break_time', type=int, help='Break Interval (minutes
 args = parser.parse_args()
 
 # Time Definitions
-seconds_minute = 1
+seconds_minute = 60
 minutes_hour = 60
 hours_day = 24
 
@@ -41,7 +41,8 @@ def progress(count, total, suffix=''):
 
 # Initial Entry into Program; Clear Screen
 print(chr(27) + "[2J")
-
+# Initial Print to give user feedback that execution has begun
+progress(0,task_time,'Task Time Elapsed: 0:00')
 while True:
     # Task Loop
     for i in range(0, task_time):
