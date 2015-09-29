@@ -41,15 +41,15 @@ def progress(count, total, suffix=''):
 
 # Initial Entry into Program; Clear Screen
 print(chr(27) + "[2J")
-# Initial Print to give user feedback that execution has begun
-progress(0,task_time,'Task Time Elapsed: 0:00')
 while True:
     # Task Loop
+    progress(0,task_time,'Task Time Elapsed: 0:00')
     for i in range(0, task_time):
         time.sleep(seconds_minute)
         progress(i,task_time,'Task Time Elapsed: %s:00' % i)
     alert()
     # Break Loop
+    progress(0,task_time,'Break Time Elapsed: 0:00')
     for i in range(0, break_time):
         time.sleep(seconds_minute)
         progress(i,break_time,'Break Time Elapsed: %s:00' % i)
