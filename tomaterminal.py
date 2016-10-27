@@ -3,12 +3,17 @@ import time
 import sys
 import argparse
 
-# Help String
-description_string = "Tomaterminal is a terminal program based on the Pomodoro (Italian for Tomato) method of working. In the Pomodoro method, you take a timer ((frequently tomato shaped) historically used in kitchens) and you set a 25 minute timer for work. After 25 mintues are completed, you set a 5 minute timer for break. Tomaterminal emulates this exact behavior, alerting you after 25 minutes have elapsed, then after your 5 minute break has elapsed."
+
+description_string = """Tomaterminal is a terminal program based on the Pomodoro
+ (Italian for Tomato) method of working. In the Pomodoro method, you take a timer
+ ((frequently tomato shaped) historically used in kitchens) and you set a 25 minute
+ timer for work. After 25 mintues are completed, you set a 5 minute timer for break.
+ Tomaterminal emulates this exact behavior, alerting you after 25 minutes have
+ elapsed, then after your 5 minute break has elapsed."""
 
 parser = argparse.ArgumentParser(description=description_string)
-parser.add_argument('-t','--task_time', type=int, help='Task Interval (minutes)',required=False)
-parser.add_argument('-b','--break_time', type=int, help='Break Interval (minutes)',required=False)
+parser.add_argument('-t', '--task_time', type=int, help='Task Interval (minutes)', required=False)
+parser.add_argument('-b', '--break_time', type=int, help='Break Interval (minutes)', required=False)
 args = parser.parse_args()
 
 # Time Definitions
@@ -29,8 +34,10 @@ if args.break_time is not None:
 # UI Definitions
 progress_bar_length = 40
 
+
 def alert():
-    print ('\a')
+    print('\a')
+
 
 def progress(count, total, suffix=''):
     filled_len = int(round(progress_bar_length * count / float(total)))
@@ -43,14 +50,14 @@ def progress(count, total, suffix=''):
 print(chr(27) + "[2J")
 while True:
     # Task Loop
-    progress(0,task_time,'Task Time Elapsed: 0:00')
+    progress(0, task_time, 'Task Time Elapsed: 0:00')
     for i in range(0, task_time):
         time.sleep(seconds_minute)
-        progress(i,task_time,'Task Time Elapsed: %s:00' % i)
+        progress(i, task_time, 'Task Time Elapsed: %s:00' % i)
     alert()
     # Break Loop
-    progress(0,task_time,'Break Time Elapsed: 0:00')
+    progress(0, task_time, 'Break Time Elapsed: 0:00')
     for i in range(0, break_time):
         time.sleep(seconds_minute)
-        progress(i,break_time,'Break Time Elapsed: %s:00' % i)
+        progress(i, break_time, 'Break Time Elapsed: %s:00' % i)
     alert()
